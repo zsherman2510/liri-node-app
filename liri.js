@@ -54,7 +54,7 @@ var fetchBands = function(bandName) {
 
     concerts.forEach((concert, i) => {
       console.log(i);
-      console.log(concert);
+      console.log(concert.venue.name + concert.venue.city + moment().format());
     });
   });
 };
