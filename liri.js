@@ -38,6 +38,27 @@ var fetchSpotify = function(songName) {
   );
 };
 
+var fetchBands = function(bandName) {
+  var queryURL =
+    "https://rest.bandsintown.com/artists/" +
+    bandName +
+    "/events?app_id=codingbootcamp";
+  axios.get(queryURL).then(function(res) {
+    var concerts = res.data;
+
+    if (!concerts.length) {
+      console.log("No results found for" + bandName);
+      return;
+    }
+    console.log("Upcoming Events for " + bandName + ":");
+
+    concerts.forEach((concert, i) => {
+      console.log(i);
+      console.log(concert);
+    });
+  });
+};
+
 var commands = function(caseData, functionData) {
   switch (caseData) {
     case "concert-this":
@@ -63,7 +84,6 @@ var commands = function(caseData, functionData) {
 
 var commandThis = function(argOne, argTwo) {
   commands(argOne, argTwo);
-  console.log(process.argv);
 };
 
 commandThis(process.argv[2], process.argv.slice(3).join(" "));
