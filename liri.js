@@ -98,6 +98,20 @@ var fetchMovies = function(movie) {
     });
 };
 
+var customCmd = function() {
+  fs.readFile("random.txt", "utf8", function(error, data) {
+    console.log(data);
+
+    var dataArr = data.split(",");
+
+    if (dataArr.length === 2) {
+      commands(dataArr[0], dataArr[1]);
+    } else if (dataArr.length === 1) {
+      commands(dataArr[0]);
+    }
+  });
+};
+
 var commands = function(caseData, functionData) {
   switch (caseData) {
     case "concert-this":
