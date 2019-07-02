@@ -54,9 +54,48 @@ var fetchBands = function(bandName) {
 
     concerts.forEach((concert, i) => {
       console.log(i);
-      console.log(concert.venue.name + concert.venue.city + moment().format());
+      console.log(
+        "Location:" + " " + concert.venue.city + "," + concert.venue.region ||
+          concert.venue.country
+      );
+      console.log("Venue:" + " " + concert.venue.name);
+      console.log(
+        "Date: " + " " + moment(concert.datetime).format("MM/DD/YYYY")
+      );
+
+      // concert.venue.country +
+      //   "at" +
+      //   concert.venue.name +
+      //
     });
   });
+};
+
+var fetchMovies = function(movie) {
+  if (movie === "") {
+    movie = "Mr. Nobody";
+  }
+  console.log(movie);
+
+  var movieURL = "http://www.omdbapi.com/?t=" + movie + "&apikey=fe946c01";
+
+  axios
+    .get(movieURL)
+    .then(function(res) {
+      var movieData = res.data;
+
+      console.log("Title:" + " " + movieData.Title);
+      console.log("Year of Release:" + " " + movieData.Released);
+      console.log("IMDB Rating:" + " " + movieData.imdbRating);
+      console.log("Rotten Tomatoes:" + " " + movieData.Title);
+      console.log("Country:" + " " + movieData.Country);
+      console.log("Language:" + " " + movieData.Language);
+      console.log("Plot:" + " " + movieData.Plot);
+      console.log("Actors:" + " " + movieData.Actors);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 };
 
 var commands = function(caseData, functionData) {
