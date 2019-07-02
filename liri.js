@@ -87,7 +87,7 @@ var fetchMovies = function(movie) {
       console.log("Title:" + " " + movieData.Title);
       console.log("Year of Release:" + " " + movieData.Released);
       console.log("IMDB Rating:" + " " + movieData.imdbRating);
-      console.log("Rotten Tomatoes:" + " " + movieData.Title);
+      console.log("Rotten Tomatoes:" + " " + movieData.Ratings[1].Value);
       console.log("Country:" + " " + movieData.Country);
       console.log("Language:" + " " + movieData.Language);
       console.log("Plot:" + " " + movieData.Plot);
